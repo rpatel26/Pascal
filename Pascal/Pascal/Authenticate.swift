@@ -1,0 +1,122 @@
+//
+//  Authenticate.swift
+//  Pascal
+//
+//  Created by Ravi Patel on 5/11/19.
+//  Copyright © 2019 ECE 140. All rights reserved.
+//
+
+import Foundation
+import Firebase
+import FirebaseAuth
+import GoogleSignIn
+import FacebookCore
+import FacebookLogin
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// global DispatchGroup for thread control
+let global_dispatchGroup = DispatchGroup()
+func run(completion: @escaping() -> Void)
+{
+    DispatchQueue.main.async{
+        completion()
+    }
+}
+
+
+class Authenticate{
+    static let instance = Authenticate()
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // For Google sign in
+    var google_sign_in_success = false
+    var global_google_uiDeletage:GIDSignInUIDelegate!
+    func authenticate_google_signIn(success: @escaping () -> ())
+    {
+        global_dispatchGroup.enter()
+        run{
+            print("before google sign in...")
+            GIDSignIn.sharedInstance()?.uiDelegate = self.global_google_uiDeletage;
+            GIDSignIn.sharedInstance()?.signIn();
+            success()
+        }
+    }
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // For user registration
+    var registration_isValid:Bool = false
+    func register_user(email: String, passWord: String, success: @escaping () -> (), failure: @escaping () -> ())
+    {
+        Auth.auth().createUser(withEmail: email, password: passWord) { (user, error) in
+            // error creating new user
+            if let _ = error{
+                failure()
+            }
+            else{
+                if let _ = Auth.auth().currentUser{
+                    Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                        // cound not send email verification
+                        if let _ = error{
+                            failure()
+                        }
+                        else{
+                            success()
+                        }
+                    })
+                }
+                else{
+                    // user alread in the database, cannot recreate user
+                    failure()
+                }
+            }
+        }
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // For user authentication
+    func authenticate_user_login(email: String, passWord: String, success: @escaping () -> (), failure: @escaping () -> ())
+    {
+        Auth.auth().signIn(withEmail: email, password: passWord) { (user, error) in
+            if let _ = error{
+                failure()
+            }
+            else{
+                print("auth success")
+                // check if user has verified their email
+                if let user = Auth.auth().currentUser{
+                    if !user.isEmailVerified{
+                        failure()
+                    }
+                    else {
+                        success()
+                    }
+                }
+
+            }
+        }
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // For sending password reset link
+    func send_password_reset_link(email: String, success: @escaping () -> (), failure: @escaping () -> ()){
+        
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            // error sending password reset link
+            if error != nil{
+                failure()
+            }
+            else{
+                // password reset link send
+                success()
+            }
+        }
+    }
+}
