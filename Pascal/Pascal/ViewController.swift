@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pascal_logo: UIImageView!
     @IBOutlet weak var email_textfield: UITextField!

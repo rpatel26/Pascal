@@ -15,10 +15,12 @@ class LaunchScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
-        lottie_animation = AnimationView(name: "loading_animation")
+        lottie_animation = AnimationView(name: "loadingAnimation")
         lottie_animation.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         
         self.view.addSubview(lottie_animation)
+        self.view.backgroundColor = UIColor.white
+        print("view did load....")
     }
     
     override func viewDidAppear(_ animated: Bool) {

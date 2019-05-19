@@ -15,6 +15,8 @@
 		5E7133202291EA91003ABFC8 /* VerificationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71331F2291EA91003ABFC8 /* VerificationScreenViewController.swift */; };
 		5E7133222291FFC9003ABFC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7133212291FFC9003ABFC8 /* User.swift */; };
 		5E71332422920035003ABFC8 /* WriteToDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71332322920035003ABFC8 /* WriteToDatabase.swift */; };
+		5E71332622920A4C003ABFC8 /* BluetoothInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71332522920A4C003ABFC8 /* BluetoothInterface.swift */; };
+		5E71332A22920C93003ABFC8 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E71332922920C93003ABFC8 /* loadingAnimation.json */; };
 		5EA43614228748110022D9AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA43613228748110022D9AE /* AppDelegate.swift */; };
 		5EA43616228748110022D9AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA43615228748110022D9AE /* ViewController.swift */; };
 		5EA43619228748110022D9AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA43617228748110022D9AE /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 		5E71331F2291EA91003ABFC8 /* VerificationScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationScreenViewController.swift; sourceTree = "<group>"; };
 		5E7133212291FFC9003ABFC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5E71332322920035003ABFC8 /* WriteToDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteToDatabase.swift; sourceTree = "<group>"; };
+		5E71332522920A4C003ABFC8 /* BluetoothInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothInterface.swift; sourceTree = "<group>"; };
+		5E71332922920C93003ABFC8 /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loadingAnimation.json; path = ../../loadingAnimation.json; sourceTree = "<group>"; };
 		5EA43610228748110022D9AE /* Pascal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pascal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA43613228748110022D9AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EA43615228748110022D9AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				5E7133212291FFC9003ABFC8 /* User.swift */,
 				5E6926A6228755C000AF50FC /* Authenticate.swift */,
 				5E71332322920035003ABFC8 /* WriteToDatabase.swift */,
+				5E71332522920A4C003ABFC8 /* BluetoothInterface.swift */,
+				5E71332922920C93003ABFC8 /* loadingAnimation.json */,
 			);
 			path = Pascal;
 			sourceTree = "<group>";
@@ -174,6 +180,7 @@
 			files = (
 				5EA4361E228748120022D9AE /* LaunchScreen.storyboard in Resources */,
 				5E5AD29A2291E2B8001979E7 /* GoogleService-Info.plist in Resources */,
+				5E71332A22920C93003ABFC8 /* loadingAnimation.json in Resources */,
 				5EA4361B228748120022D9AE /* Assets.xcassets in Resources */,
 				5EA43619228748110022D9AE /* Main.storyboard in Resources */,
 			);
@@ -253,6 +260,7 @@
 				5E5AD29C2291E60B001979E7 /* ForgotPasswordViewController.swift in Sources */,
 				5EA43616228748110022D9AE /* ViewController.swift in Sources */,
 				5E71332422920035003ABFC8 /* WriteToDatabase.swift in Sources */,
+				5E71332622920A4C003ABFC8 /* BluetoothInterface.swift in Sources */,
 				5EA43614228748110022D9AE /* AppDelegate.swift in Sources */,
 				5E7133222291FFC9003ABFC8 /* User.swift in Sources */,
 				5E71331C2291E7D6003ABFC8 /* LaunchScreenViewController.swift in Sources */,
