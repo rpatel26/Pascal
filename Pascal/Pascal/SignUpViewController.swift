@@ -10,6 +10,14 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var firstname_textfield: UITextField!
+    @IBOutlet weak var lastname_textfield: UITextField!
+    @IBOutlet weak var email_textfield: UITextField!
+    @IBOutlet weak var password_textfield: UITextField!
+    @IBOutlet weak var phone_textfield: UITextField!
+    @IBOutlet weak var age_textfield: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,4 +47,39 @@ class SignUpViewController: UIViewController {
         self.view.frame.origin.y = 0 // Move view to original position
     }
 
+    
+    @IBAction func signup_button_clicked(_ sender: Any) {
+        
+        if let firstName = firstname_textfield.text, let lastName = lastname_textfield.text, let email = email_textfield.text, let phone = phone_textfield.text, let age = age_textfield.text, let password = password_textfield.text{
+            
+            let new_user = User(firstName: firstName, lastName: lastName, phone: phone, email: email, age: age, uuid: UUID().uuidString)
+            
+            Authenticate.instance.register_user(email: email, passWord: password, success: {
+                // user registration successful
+                WriteToDatabase.instance.create_new_user(user: new_user, success: {
+                    // writing to database success
+                    let alert = UIAlertController(title: "Success", message: "New User successfully created.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }, failure: {
+                    // writing to database failure
+                    let alert = UIAlertController(title: "Error", message: "Failed to create a new user.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                })
+            }) {
+                // user registration failure
+                let alert = UIAlertController(title: "Error", message: "Failed to create a new account.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+        }
+        else{
+            // Not all field is entered
+            let alert = UIAlertController(title: "Error", message: "Make sure all of the textfield are not empty.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
 }

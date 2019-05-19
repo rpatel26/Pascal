@@ -123,7 +123,20 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_image" translatesAutoresizingMaskIntoConstraints="NO" id="c6n-7b-gOW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLc-sv-h7y">
+                                <rect key="frame" x="16" y="20" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="back_button"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="afu-sp-pCQ"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00f-v4-VL0">
                                 <rect key="frame" x="16" y="95" width="94" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -164,6 +177,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signup_button_clicked:" destination="J0y-hi-g2z" eventType="touchUpInside" id="dBn-5f-var"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JVw-HN-QxT">
                                 <rect key="frame" x="16" y="127" width="343" height="30"/>
@@ -225,19 +241,31 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLc-sv-h7y">
-                                <rect key="frame" x="16" y="20" width="45" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVm-jK-LtF">
+                                <rect key="frame" x="16" y="446" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="back_button"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="afu-sp-pCQ"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2zu-N8-idz">
+                                <rect key="frame" x="16" y="475" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="D4b-mA-eAG"/>
                     </view>
                     <connections>
+                        <outlet property="age_textfield" destination="2zu-N8-idz" id="cnJ-SX-cvl"/>
+                        <outlet property="email_textfield" destination="faF-Aj-lBA" id="dRs-Zt-rd7"/>
+                        <outlet property="firstname_textfield" destination="JVw-HN-QxT" id="wY3-Kw-6Fc"/>
+                        <outlet property="lastname_textfield" destination="3Pf-2U-zEg" id="tG8-If-0jP"/>
+                        <outlet property="password_textfield" destination="waj-y1-HLi" id="EV8-eG-Nf1"/>
+                        <outlet property="phone_textfield" destination="noo-Zy-Efa" id="wTE-v3-cJL"/>
                         <segue destination="05a-m9-ud8" kind="show" id="diQ-4p-URD"/>
                     </connections>
                 </viewController>
@@ -312,7 +340,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="back_button"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="xRR-Y0-O6U"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="forgot_password_to_main" id="xRR-Y0-O6U"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -334,6 +362,6 @@
         <image name="pascal_logo" width="346" height="302"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="afu-sp-pCQ"/>
+        <segue reference="xRR-Y0-O6U"/>
     </inferredMetricsTieBreakers>
 </document>

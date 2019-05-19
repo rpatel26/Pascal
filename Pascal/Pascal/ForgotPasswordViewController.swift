@@ -58,8 +58,10 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         if let email = email_textfield.text{
             Authenticate.instance.send_password_reset_link(email: email, success: {
                 print("email send successfull")
-                let alert = UIAlertController(title: "Success", message: "Email send successfull", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                let alert = UIAlertController(title: "Success", message: "Email Send!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (err) in
+                    self.performSegue(withIdentifier: "forgot_password_to_main", sender: self)
+                }))
                 self.present(alert, animated: true)
             }) {
                 print("Could not send email. Make sure email is valid")
@@ -69,5 +71,4 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
 }
