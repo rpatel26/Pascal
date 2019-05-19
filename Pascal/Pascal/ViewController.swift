@@ -114,14 +114,6 @@ extension UITextField{
         tintColor.setStroke()
         
         path.stroke()
-    }
-    
-    @IBInspectable var placeHolderColor: UIColor? {
-        get {
-            return self.placeHolderColor
-        }
-        set {
-            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.backgroundColor: UIColor.white])
-        }
+        textColor = UIColor.white
     }
 }
