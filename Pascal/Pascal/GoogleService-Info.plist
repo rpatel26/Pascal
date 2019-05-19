@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>735278531301-r2je5fu5rmen4joq5al5a8qhl6iek8gj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.735278531301-r2je5fu5rmen4joq5al5a8qhl6iek8gj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAra03rwm1WqI889MfbCPYZxJWNdQUktt4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>735278531301</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ECE140.Pascal</string>
+	<key>PROJECT_ID</key>
+	<string>pascal-269cd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pascal-269cd.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:735278531301:ios:12766c797fd59210</string>
+	<key>DATABASE_URL</key>
+	<string>https://pascal-269cd.firebaseio.com</string>
+</dict>
+</plist>

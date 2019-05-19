@@ -8,48 +8,10 @@
 
 import UIKit
 import Firebase
-import GoogleSignIn
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            // ...
-            print("Error before Authentication!! = ", error)
-            global_dispatchGroup.leave()
-            return
-        }
-        
-        print("User signing into Google...")
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let error = error {
-                // ...
-                print("Error signing in user!!! = ", error)
-                Authenticate.instance.google_sign_in_success = false
-                global_dispatchGroup.leave()
-                return
-            }
-            // User is signed in
-            // ...
-            print("Welcome User!!")
-
-            Authenticate.instance.google_sign_in_success = true
-            global_dispatchGroup.leave()
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        
-        print("Signing out user")
-        GIDSignIn.sharedInstance()?.signOut()
-        Authenticate.instance.google_sign_in_success = false
-    }
-
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
@@ -59,33 +21,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // for connecting firebase with this app
         FirebaseApp.configure()
         
-        // For google sign-in
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
-        
         return true
     }
     
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                 annotation: [:])
-    }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-        var flag: Bool = false
-        
-        if let google_handler:Bool = GIDSignIn.sharedInstance().handle(url,
-                                                                       sourceApplication: sourceApplication,
-                                                                       annotation: annotation) {
-            flag = google_handler
-        }
-        
-        return flag
-        //        return (FBSDKApplicationDelegate.sharedInstance()?.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation))!
-    }
+//    @available(iOS 9.0, *)
+//    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        return GIDSignIn.sharedInstance().handle(url,
+//                                                 sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//                                                 annotation: [:])
+//    }
+//
+//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//
+//        var flag: Bool = false
+//
+//        if let google_handler:Bool = GIDSignIn.sharedInstance().handle(url,
+//                                                                       sourceApplication: sourceApplication,
+//                                                                       annotation: annotation) {
+//            flag = google_handler
+//        }
+//
+//        return flag
+//        //        return (FBSDKApplicationDelegate.sharedInstance()?.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation))!
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
