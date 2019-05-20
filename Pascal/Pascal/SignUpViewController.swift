@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var firstname_textfield: UITextField!
     @IBOutlet weak var lastname_textfield: UITextField!
@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var password_textfield: UITextField!
     @IBOutlet weak var phone_textfield: UITextField!
     @IBOutlet weak var age_textfield: UITextField!
+    @IBOutlet weak var signup_button: UIButton!
     
     
     override func viewDidLoad() {
@@ -25,6 +26,15 @@ class SignUpViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name:UIResponder.keyboardWillHideNotification, object: nil)
         
+        firstname_textfield.delegate = self
+        lastname_textfield.delegate = self
+        email_textfield.delegate = self
+        password_textfield.delegate = self
+        phone_textfield.delegate = self
+        age_textfield.delegate = self
+
+        
+        signup_button.customize_button()
     }
     
 
@@ -47,6 +57,28 @@ class SignUpViewController: UIViewController {
         self.view.frame.origin.y = 0 // Move view to original position
     }
 
+    // when hitting enter on the textfield
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstname_textfield {
+            lastname_textfield.becomeFirstResponder()
+        }
+        else if textField == lastname_textfield{
+            age_textfield.becomeFirstResponder()
+        }
+        else if textField == age_textfield{
+            phone_textfield.becomeFirstResponder()
+        }
+        else if textField == phone_textfield{
+            email_textfield.becomeFirstResponder()
+        }
+        else if textField == email_textfield{
+            password_textfield.becomeFirstResponder()
+        }
+        else if textField == password_textfield{
+            signup_button_clicked(self)
+        }
+        return true
+    }
     
     @IBAction func signup_button_clicked(_ sender: Any) {
         

@@ -12,20 +12,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pascal_logo: UIImageView!
     @IBOutlet weak var email_textfield: UITextField!
     @IBOutlet weak var password_textfield: UITextField!
-    @IBOutlet weak var sign_up_button: UIButton!
-    @IBOutlet weak var sign_in_button: UIButton!
+    
     @IBOutlet weak var forgot_password_button: UIButton!
+    @IBOutlet weak var login_button: UIButton!
+    @IBOutlet weak var signup_button: UIButton!
     
-    
+    let yourAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.systemFont(ofSize: 14),
+        .foregroundColor: UIColor.white,
+        .underlineStyle: NSUnderlineStyle.single.rawValue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        Authenticate.instance.register_user(email: "dtheokar@ucsd.edu", passWord: "pascal", success: {
-//            print("user registration successful")
-//        }) {
-//            print("failed to register user")
-//        }
         
         // to change view when keyboard appeards
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name:UIResponder.keyboardWillShowNotification, object: nil)
@@ -34,8 +32,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         email_textfield.delegate = self
         password_textfield.delegate = self
         
-        email_textfield.borderStyle = .none
-        password_textfield.borderStyle = .none
+        login_button.customize_button()
+        signup_button.customize_button()
+        
+        let attributeString = NSMutableAttributedString(string: "Forgot Password",
+                                                        attributes: yourAttributes)
+        forgot_password_button.setAttributedTitle(attributeString, for: .normal)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -93,7 +95,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true)
         }
     }
-    
 }
 
 
@@ -114,5 +115,21 @@ extension UITextField{
         
         path.stroke()
         textColor = UIColor.white
+        borderStyle = .none
     }
 }
+
+extension UIButton{
+    func customize_button(){
+        self.layer.cornerRadius = self.frame.size.height / 2
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.setTitleColor(UIColor.gray, for: .normal)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 2.0
+        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowColor = UIColor(red: (0x48/255), green: (0x48/255), blue: CGFloat(0x48/255), alpha: 1.0).cgColor
+    }
+}
+
+

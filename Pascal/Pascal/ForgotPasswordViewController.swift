@@ -11,7 +11,14 @@ import UIKit
 class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var email_textfield: UITextField!
-
+    @IBOutlet weak var send_button: UIButton!
+    @IBOutlet weak var signup_button: UIButton!
+    
+    let yourAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.systemFont(ofSize: 14),
+        .foregroundColor: UIColor.white,
+        .underlineStyle: NSUnderlineStyle.single.rawValue]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +33,11 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name:UIResponder.keyboardWillHideNotification, object: nil)
         
         email_textfield.delegate = self
+        send_button.customize_button()
+        
+        let attributeString = NSMutableAttributedString(string: "Sign up!",
+                                                        attributes: yourAttributes)
+        signup_button.setAttributedTitle(attributeString, for: .normal)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
