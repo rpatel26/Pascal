@@ -78,9 +78,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let email = email_textfield.text, let password = password_textfield.text {
             Authenticate.instance.authenticate_user_login(email: email, passWord: password, success: {
                 print("log in successful...")
-                let alert = UIAlertController(title: "Success", message: "Welcome User", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self.present(alert, animated: true)
+//                let alert = UIAlertController(title: "Success", message: "Welcome User", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+//                self.present(alert, animated: true)
+                self.performSegue(withIdentifier: "to_maps_view", sender: self)
             }) {
                 print("failed login...")
                 let alert = UIAlertController(title: "Error", message: "Incorrect email or password", preferredStyle: .alert)

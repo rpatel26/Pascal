@@ -10,6 +10,8 @@ target 'Pascal' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
   
   # Pods for Lottie Animation
   pod 'lottie-ios'  

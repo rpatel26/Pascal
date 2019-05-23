@@ -11,6 +11,7 @@ import Lottie
 
 class LaunchScreenViewController: UIViewController {
     var lottie_animation: AnimationView!
+    @IBOutlet weak var loading_animation: AnimationView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

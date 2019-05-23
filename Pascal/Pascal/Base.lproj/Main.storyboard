@@ -17,16 +17,42 @@
                     <view key="view" contentMode="scaleToFill" id="yUF-xE-yVo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1r-sg-af5" customClass="AnimationView">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="loadingAnimation.json"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KUn-ih-49A"/>
                     </view>
                     <connections>
+                        <outlet property="loading_animation" destination="Y1r-sg-af5" id="Euq-li-zPk"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="lottie_to_main" id="lyU-dy-ijr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zjd-5i-nNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-922" y="27"/>
+        </scene>
+        <!--Google Maps View Controller-->
+        <scene sceneID="d4d-qf-TdS">
+            <objects>
+                <viewController id="BbS-AQ-8G7" customClass="GoogleMapsViewController" customModule="Pascal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="75P-c3-zw2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kec-ZG-uH5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1fP-AJ-afr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="-848"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -97,6 +123,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqU-Kw-cg3">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="BbS-AQ-8G7" kind="presentation" id="thy-dQ-8j9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -108,6 +142,7 @@
                         <outlet property="pascal_logo" destination="viN-S0-iOR" id="mbI-Vf-H21"/>
                         <outlet property="password_textfield" destination="e3o-D4-5aA" id="Z3a-7U-F8L"/>
                         <outlet property="signup_button" destination="rCX-Hu-gbr" id="QW2-Nk-B90"/>
+                        <segue destination="BbS-AQ-8G7" kind="show" identifier="to_maps_view" id="OnV-PX-Zcl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -362,7 +397,8 @@
         <image name="pascal_logo" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="w2o-Hj-hHD"/>
-        <segue reference="afu-sp-pCQ"/>
+        <segue reference="N1X-f8-7hv"/>
+        <segue reference="lyU-dy-ijr"/>
+        <segue reference="OnV-PX-Zcl"/>
     </inferredMetricsTieBreakers>
 </document>
