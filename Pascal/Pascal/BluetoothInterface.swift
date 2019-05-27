@@ -2,18 +2,18 @@
 //  BluetoothInterface.swift
 //  Pascal
 //
-//  Created by Ravi Patel on 5/19/19.
+//  Created by Ravi Patel on 5/27/19.
 //  Copyright © 2019 ECE 140. All rights reserved.
 //
 
 import Foundation
 import CoreBluetooth
 
-class BluetoothInterface: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate, CBPeripheralDelegate {
+class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate, CBPeripheralDelegate {
     
     override init() {
         super.init()
-        print("Stella Manager init")
+        print("Bluetooth Manager init")
         centralManager = CBCentralManager(delegate: self, queue: nil)
         initVar()
     }
@@ -36,7 +36,11 @@ class BluetoothInterface: NSObject, CBCentralManagerDelegate, CBPeripheralManage
         }
     }
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        //        print(peripheral.name ?? "nil")
+        
+        if peripheral.name != nil {
+            print("Peripheral name: ", peripheral.name)
+        }
+        
         if  peripheral_Name == peripheral.name {
             if self.peripheral == nil {
                 self.peripheral = peripheral
@@ -113,7 +117,7 @@ class BluetoothInterface: NSObject, CBCentralManagerDelegate, CBPeripheralManage
     
     var connectedPeripheral: CBPeripheral!
     
-    private var peripheral_Name = "BT_Connection"
+    private var peripheral_Name = "raspberrypi"
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
     private var serviceDictionary: [CBService: [CBCharacteristic]]!
