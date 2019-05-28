@@ -26,7 +26,25 @@ class Authenticate{
     static let instance = Authenticate()
     
     
+    func isUserLoggedIn(success: @escaping () -> (), failure: @escaping () -> ()){
+        if Auth.auth().currentUser != nil{
+            success()
+        }
+        else{
+            failure()
+        }
+    }
     
+    func signOutUser(success: @escaping () -> (), failure: @escaping () -> ()){
+        do {
+            try Auth.auth().signOut()
+            success()
+
+        }catch let signOutError as NSError{
+            print ("Error signing out: %@", signOutError)
+            failure()
+        }
+    }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

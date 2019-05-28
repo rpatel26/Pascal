@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E49725022962DE2002E576A /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49724F22962DE2002E576A /* GoogleMapsViewController.swift */; };
 		5E5AD29A2291E2B8001979E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E5AD2992291E2B8001979E7 /* GoogleService-Info.plist */; };
 		5E5AD29C2291E60B001979E7 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5AD29B2291E60B001979E7 /* ForgotPasswordViewController.swift */; };
 		5E6926A7228755C000AF50FC /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6926A6228755C000AF50FC /* Authenticate.swift */; };
@@ -30,12 +29,12 @@
 		5EDAE8F6229C7C0500562D97 /* MenuBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDAE8F5229C7C0500562D97 /* MenuBarViewController.swift */; };
 		5EDAE8F8229C821600562D97 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDAE8F7229C821600562D97 /* GradientLayer.swift */; };
 		5EDAE8FA229C997C00562D97 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDAE8F9229C997C00562D97 /* PaymentViewController.swift */; };
+		5EDAE8FC229CAA6B00562D97 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDAE8FB229CAA6B00562D97 /* SettingsViewController.swift */; };
 		C08FA8142E1588395E9CA6E2 /* Pods_Pascal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6809D9CB123D693A65C249BD /* Pods_Pascal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		41CD434056A190D3718DAC9A /* Pods-Pascal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pascal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pascal/Pods-Pascal.release.xcconfig"; sourceTree = "<group>"; };
-		5E49724F22962DE2002E576A /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		5E5AD2992291E2B8001979E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E5AD29B2291E60B001979E7 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5E6926A6228755C000AF50FC /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		5EDAE8F5229C7C0500562D97 /* MenuBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarViewController.swift; sourceTree = "<group>"; };
 		5EDAE8F7229C821600562D97 /* GradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
 		5EDAE8F9229C997C00562D97 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		5EDAE8FB229CAA6B00562D97 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6809D9CB123D693A65C249BD /* Pods_Pascal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pascal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D7F274FB70AB869C2962C77 /* Pods-Pascal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pascal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pascal/Pods-Pascal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,7 +114,6 @@
 				5E5AD29B2291E60B001979E7 /* ForgotPasswordViewController.swift */,
 				5E71331D2291E97A003ABFC8 /* SignUpViewController.swift */,
 				5E71331F2291EA91003ABFC8 /* VerificationScreenViewController.swift */,
-				5E49724F22962DE2002E576A /* GoogleMapsViewController.swift */,
 				5EA43617228748110022D9AE /* Main.storyboard */,
 				5EA4361A228748120022D9AE /* Assets.xcassets */,
 				5EA4361C228748120022D9AE /* LaunchScreen.storyboard */,
@@ -145,6 +144,7 @@
 				5EDAE8F3229C714900562D97 /* LandingPageViewController.swift */,
 				5EDAE8F5229C7C0500562D97 /* MenuBarViewController.swift */,
 				5EDAE8F9229C997C00562D97 /* PaymentViewController.swift */,
+				5EDAE8FB229CAA6B00562D97 /* SettingsViewController.swift */,
 				5EDAE8F7229C821600562D97 /* GradientLayer.swift */,
 			);
 			path = "Landing Page";
@@ -330,11 +330,11 @@
 				5EA43616228748110022D9AE /* ViewController.swift in Sources */,
 				5EDAE8F4229C714900562D97 /* LandingPageViewController.swift in Sources */,
 				5E71332422920035003ABFC8 /* WriteToDatabase.swift in Sources */,
-				5E49725022962DE2002E576A /* GoogleMapsViewController.swift in Sources */,
 				5EA43614228748110022D9AE /* AppDelegate.swift in Sources */,
 				5E7133222291FFC9003ABFC8 /* User.swift in Sources */,
 				5E71331C2291E7D6003ABFC8 /* LaunchScreenViewController.swift in Sources */,
 				5EDAE8E9229C666300562D97 /* BluetoothViewController.swift in Sources */,
+				5EDAE8FC229CAA6B00562D97 /* SettingsViewController.swift in Sources */,
 				5EDAE8F8229C821600562D97 /* GradientLayer.swift in Sources */,
 				5E7133202291EA91003ABFC8 /* VerificationScreenViewController.swift in Sources */,
 				5E6926A7228755C000AF50FC /* Authenticate.swift in Sources */,

@@ -115,4 +115,24 @@ class MenuBarViewController: UIViewController {
         self.present(viewController, animated: true, completion: nil)
     }
     
+    @IBAction func settings_button_clicked(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "settings_page")
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func logout_button_clicked(_ sender: Any) {
+        
+        Authenticate.instance.signOutUser(success: {
+            // success sign out
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "launch_screen")
+            self.present(viewController, animated: true, completion: nil)
+        }) {
+            // cannot sign out
+        }
+
+    }
+    
+    
 }

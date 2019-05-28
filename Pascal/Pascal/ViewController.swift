@@ -38,6 +38,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let attributeString = NSMutableAttributedString(string: "Forgot Password",
                                                         attributes: yourAttributes)
         forgot_password_button.setAttributedTitle(attributeString, for: .normal)
+        
+        Authenticate.instance.isUserLoggedIn(success: {
+            // user is logged in...sign in user
+            let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
+            self.present(viewController, animated: false, completion: nil)
+        }) {
+            // do nothing if user not logged in
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -81,9 +90,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //                let alert = UIAlertController(title: "Success", message: "Welcome User", preferredStyle: .alert)
 //                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
 //                self.present(alert, animated: true)
-                self.performSegue(withIdentifier: "to_maps_view", sender: self)
+                let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
+                self.present(viewController, animated: false, completion: nil)
             }) {
                 print("failed login...")
+
                 let alert = UIAlertController(title: "Error", message: "Incorrect email or password", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                 self.present(alert, animated: true)
@@ -91,11 +103,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         else{
             print("Email or Password Text Field Cannot be empty!!!....")
+
             let alert = UIAlertController(title: "Error", message: "Email or Password Text Field Cannot be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
+    
+    @IBAction func button_clicked(_ sender: Any) {
+        Authenticate.instance.authenticate_user_login(email: "dtheokar@ucsd.edu", passWord: "pascal", success: {
+            print("log in successful...")
+            //                let alert = UIAlertController(title: "Success", message: "Welcome User", preferredStyle: .alert)
+            //                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            //                self.present(alert, animated: true)
+            let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
+            self.present(viewController, animated: false, completion: nil)
+        }) {
+            print("failed login...")
+            UserDefaults.standard.set(false, forKey: "userLoggedIn")
+            
+            let alert = UIAlertController(title: "Error", message: "Incorrect email or password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
 }
 
 
