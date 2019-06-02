@@ -87,9 +87,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let email = email_textfield.text, let password = password_textfield.text {
             Authenticate.instance.authenticate_user_login(email: email, passWord: password, success: {
                 print("log in successful...")
-//                let alert = UIAlertController(title: "Success", message: "Welcome User", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-//                self.present(alert, animated: true)
                 let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
                 self.present(viewController, animated: false, completion: nil)
@@ -113,9 +110,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func button_clicked(_ sender: Any) {
         Authenticate.instance.authenticate_user_login(email: "dtheokar@ucsd.edu", passWord: "pascal", success: {
             print("log in successful...")
-            //                let alert = UIAlertController(title: "Success", message: "Welcome User", preferredStyle: .alert)
-            //                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-            //                self.present(alert, animated: true)
             let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
             self.present(viewController, animated: false, completion: nil)

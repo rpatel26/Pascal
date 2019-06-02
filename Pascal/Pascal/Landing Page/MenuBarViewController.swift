@@ -17,6 +17,8 @@ class MenuBarViewController: UIViewController {
     @IBOutlet weak var how_to_rent_button: UIButton!
     @IBOutlet weak var settings_button: UIButton!
     @IBOutlet weak var logout_button: UIButton!
+    @IBOutlet weak var welcome_label: UILabel!
+    
     
     @IBOutlet weak var menu_view: UIView!
     
@@ -30,6 +32,8 @@ class MenuBarViewController: UIViewController {
         customize_how_to_rent_button()
         customize_settings_button()
         customize_logout_button()
+        
+        welcome_label.text = "  Welcome, " + User.instance.firstName
     }
     
     

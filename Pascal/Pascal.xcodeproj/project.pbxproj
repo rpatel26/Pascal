@@ -85,6 +85,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5E8F42D622A44FE200671BEE /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				5E7133212291FFC9003ABFC8 /* User.swift */,
+				5E6926A6228755C000AF50FC /* Authenticate.swift */,
+				5E71332322920035003ABFC8 /* WriteToDatabase.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		5EA43607228748110022D9AE = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 		5EA43612228748110022D9AE /* Pascal */ = {
 			isa = PBXGroup;
 			children = (
+				5E8F42D622A44FE200671BEE /* Database */,
 				5EDAE8F2229C712100562D97 /* Landing Page */,
 				5EDAE8E7229C65DC00562D97 /* Bluetooth */,
 				5EA43613228748110022D9AE /* AppDelegate.swift */,
@@ -119,9 +130,6 @@
 				5EA4361C228748120022D9AE /* LaunchScreen.storyboard */,
 				5EA4361F228748120022D9AE /* Info.plist */,
 				5E5AD2992291E2B8001979E7 /* GoogleService-Info.plist */,
-				5E7133212291FFC9003ABFC8 /* User.swift */,
-				5E6926A6228755C000AF50FC /* Authenticate.swift */,
-				5E71332322920035003ABFC8 /* WriteToDatabase.swift */,
 				5E71332922920C93003ABFC8 /* loadingAnimation.json */,
 				5EDAE8EE229C6ABF00562D97 /* BluetoothInterface.swift */,
 			);

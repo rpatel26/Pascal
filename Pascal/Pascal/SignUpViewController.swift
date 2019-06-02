@@ -75,36 +75,49 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             password_textfield.becomeFirstResponder()
         }
         else if textField == password_textfield{
+            self.view.endEditing(true)
             signup_button_clicked(self)
         }
         return true
     }
     
     @IBAction func signup_button_clicked(_ sender: Any) {
+        self.view.endEditing(true)
         
         if let firstName = firstname_textfield.text, let lastName = lastname_textfield.text, let email = email_textfield.text, let phone = phone_textfield.text, let age = age_textfield.text, let password = password_textfield.text{
             
-            let new_user = User(firstName: firstName, lastName: lastName, phone: phone, email: email, age: age, uuid: UUID().uuidString)
+            User.instance.firstName = firstName
+            User.instance.lastName = lastName
+            User.instance.email = email
+            User.instance.password = password
+            User.instance.phone = phone
+            User.instance.age = age
             
-            Authenticate.instance.register_user(email: email, passWord: password, success: {
-                // user registration successful
-                WriteToDatabase.instance.create_new_user(user: new_user, success: {
-                    // writing to database success
-                    let alert = UIAlertController(title: "Success", message: "New User successfully created.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            User.instance.registerUser(success: {
+                // success registering user
+                User.instance.storeUserInfo(success: {
+                    // success storing user info
+                    let alert = UIAlertController(title: "Success", message: "An email has been sent to \(email). Please follow the instructions in the verifcation email to finish creating your account.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (action) in
+                        //
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "launch_screen")
+                        self.present(viewController, animated: true, completion: nil)
+                    }))
                     self.present(alert, animated: true)
                 }, failure: {
-                    // writing to database failure
+                    // failed to store user info
                     let alert = UIAlertController(title: "Error", message: "Failed to create a new user.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                     self.present(alert, animated: true)
                 })
             }) {
-                // user registration failure
+                // failed to register user
                 let alert = UIAlertController(title: "Error", message: "Failed to create a new account.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
+            
         }
         else{
             // Not all field is entered

@@ -54,23 +54,27 @@ class Authenticate{
     {
         Auth.auth().createUser(withEmail: email, password: passWord) { (user, error) in
             // error creating new user
-            if let _ = error{
+            if let err = error{
+                print("error creating new user = ", err)
                 failure()
             }
             else{
                 if let _ = Auth.auth().currentUser{
                     Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                         // cound not send email verification
-                        if let _ = error{
+                        if let err = error{
+                            print("error sending email verification = ", err)
                             failure()
                         }
                         else{
+                            User.instance.uuid = Auth.auth().currentUser?.uid
                             success()
                         }
                     })
                 }
                 else{
                     // user alread in the database, cannot recreate user
+                    print("error: user alread in the database, cannot recreate user")
                     failure()
                 }
             }
@@ -94,7 +98,15 @@ class Authenticate{
                         failure()
                     }
                     else {
-                        success()
+                        print("userid = ", user.uid)
+                        User.instance.uuid = user.uid
+                        User.instance.getUserInfo(UID: user.uid, success: {
+                            // success
+                            success()
+                        }, failure: {
+                            // failure
+                            failure()
+                        })
                     }
                 }
 
