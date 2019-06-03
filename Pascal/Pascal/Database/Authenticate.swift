@@ -21,6 +21,25 @@ func run(completion: @escaping() -> Void)
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// global activity indicator for indicating background activity
+let global_activity_indicator:UIActivityIndicatorView = UIActivityIndicatorView()
+var global_viewController:UIViewController!
+
+func startActivityIndicator(){
+    global_activity_indicator.center = global_viewController.view.center
+    global_activity_indicator.style = UIActivityIndicatorView.Style.whiteLarge
+    global_viewController.view.addSubview(global_activity_indicator)
+    UIApplication.shared.beginIgnoringInteractionEvents()
+    global_activity_indicator.startAnimating()
+}
+
+func stopActivityIndicator(){
+    global_activity_indicator.stopAnimating()
+    global_activity_indicator.hidesWhenStopped = true
+    UIApplication.shared.endIgnoringInteractionEvents()
+}
 
 class Authenticate{
     static let instance = Authenticate()

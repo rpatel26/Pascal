@@ -18,7 +18,7 @@ class LandingPageViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var how_to_rent_button: UIButton!
     @IBOutlet weak var hamburger_menu: UIButton!
     
-//    var locationManager: CLLocationManager = CLLocationManager()
+    let locationManager: CLLocationManager = CLLocationManager()
 
     @IBOutlet weak var rent_button: UIButton!
     var ref: DatabaseReference!
@@ -32,18 +32,18 @@ class LandingPageViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        locationManager.requestAlwaysAuthorization()
-////        locationManager.requestWhenInUseAuthorization()
-//
-//        if (CLLocationManager.locationServicesEnabled())
-//        {
-////            locationManager = CLLocationManager()
-//            locationManager.delegate = self
-//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-////            locationManager.requestAlwaysAuthorization()
-//            locationManager.startUpdatingLocation()
-//        }
-//
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+
+        if (CLLocationManager.locationServicesEnabled())
+        {
+//            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+
         ref = Database.database().reference()
         
         currentLatitude = 32.869131

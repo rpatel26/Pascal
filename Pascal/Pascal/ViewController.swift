@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        global_viewController = self
+        
         // to change view when keyboard appeards
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name:UIResponder.keyboardWillHideNotification, object: nil)
@@ -83,16 +85,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // login button clicked
         email_textfield.resignFirstResponder()
         password_textfield.resignFirstResponder()
+        startActivityIndicator()
         
         if let email = email_textfield.text, let password = password_textfield.text {
             Authenticate.instance.authenticate_user_login(email: email, passWord: password, success: {
                 print("log in successful...")
+                stopActivityIndicator()
                 let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
                 self.present(viewController, animated: false, completion: nil)
             }) {
                 print("failed login...")
-
+                stopActivityIndicator()
                 let alert = UIAlertController(title: "Error", message: "Incorrect email or password", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                 self.present(alert, animated: true)
@@ -100,7 +104,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         else{
             print("Email or Password Text Field Cannot be empty!!!....")
-
+            stopActivityIndicator()
             let alert = UIAlertController(title: "Error", message: "Email or Password Text Field Cannot be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -108,13 +112,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func button_clicked(_ sender: Any) {
+        startActivityIndicator()
         Authenticate.instance.authenticate_user_login(email: "dtheokar@ucsd.edu", passWord: "pascal", success: {
             print("log in successful...")
+            stopActivityIndicator()
             let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
             self.present(viewController, animated: false, completion: nil)
         }) {
             print("failed login...")
+            stopActivityIndicator()
             UserDefaults.standard.set(false, forKey: "userLoggedIn")
             
             let alert = UIAlertController(title: "Error", message: "Incorrect email or password", preferredStyle: .alert)
