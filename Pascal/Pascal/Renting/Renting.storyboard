@@ -139,6 +139,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.58823529411764708" green="0.36470588235294116" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="card_number_label" destination="iad-QU-vOk" id="vqu-L2-t3A"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="add_a_card" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="add_a_card" rowHeight="50" id="1PA-eW-Sio" customClass="AddACardTableViewCell" customModule="Pascal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="281" height="50"/>

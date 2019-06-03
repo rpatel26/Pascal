@@ -1,5 +1,5 @@
 //
-//  AddACardTableViewCell.swift
+//  AddACard2TableViewCell.swift
 //  Pascal
 //
 //  Created by Ravi Patel on 6/2/19.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class AddACardTableViewCell: UITableViewCell {
+class AddACard2TableViewCell: UITableViewCell {
 
     @IBOutlet weak var add_a_card_label: UILabel!
     @IBOutlet weak var plus_button: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         self.contentView.layer.borderWidth = 2
         self.contentView.layer.borderColor = UIColor.white.cgColor
     }

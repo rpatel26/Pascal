@@ -26,6 +26,9 @@
 		5E8F42EA22A492F400671BEE /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42E922A492F400671BEE /* FirstPageViewController.swift */; };
 		5E8F42EC22A4938100671BEE /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42EB22A4938100671BEE /* SecondPageViewController.swift */; };
 		5E8F42EE22A4938D00671BEE /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42ED22A4938D00671BEE /* ThirdPageViewController.swift */; };
+		5E8F42F022A4B72D00671BEE /* PaymentScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42EF22A4B72D00671BEE /* PaymentScreenViewController.swift */; };
+		5E8F42F222A4C10300671BEE /* CardNumber2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42F122A4C10300671BEE /* CardNumber2TableViewCell.swift */; };
+		5E8F42F422A4C12A00671BEE /* AddACard2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42F322A4C12A00671BEE /* AddACard2TableViewCell.swift */; };
 		5EA43614228748110022D9AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA43613228748110022D9AE /* AppDelegate.swift */; };
 		5EA43616228748110022D9AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA43615228748110022D9AE /* ViewController.swift */; };
 		5EA43619228748110022D9AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA43617228748110022D9AE /* Main.storyboard */; };
@@ -64,6 +67,9 @@
 		5E8F42E922A492F400671BEE /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		5E8F42EB22A4938100671BEE /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
 		5E8F42ED22A4938D00671BEE /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
+		5E8F42EF22A4B72D00671BEE /* PaymentScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreenViewController.swift; sourceTree = "<group>"; };
+		5E8F42F122A4C10300671BEE /* CardNumber2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumber2TableViewCell.swift; sourceTree = "<group>"; };
+		5E8F42F322A4C12A00671BEE /* AddACard2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddACard2TableViewCell.swift; sourceTree = "<group>"; };
 		5EA43610228748110022D9AE /* Pascal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pascal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA43613228748110022D9AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EA43615228748110022D9AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,9 +126,9 @@
 			children = (
 				5E8F42D822A45F3F00671BEE /* Renting.storyboard */,
 				5E8F42DA22A4637700671BEE /* SerialNumberViewController.swift */,
+				5E8F42E222A47BF000671BEE /* CurrentStatusViewController.swift */,
 				5E8F42DC22A468E800671BEE /* SelectPaymentViewController.swift */,
 				5E8F42DE22A46A0B00671BEE /* CardNumberTableViewCell.swift */,
-				5E8F42E222A47BF000671BEE /* CurrentStatusViewController.swift */,
 				5E8F42E022A472E500671BEE /* AddACardTableViewCell.swift */,
 			);
 			path = Renting;
@@ -198,8 +204,11 @@
 				5EDAE8F3229C714900562D97 /* LandingPageViewController.swift */,
 				5EDAE8F5229C7C0500562D97 /* MenuBarViewController.swift */,
 				5EDAE8F9229C997C00562D97 /* PaymentViewController.swift */,
+				5E8F42EF22A4B72D00671BEE /* PaymentScreenViewController.swift */,
 				5EDAE8FB229CAA6B00562D97 /* SettingsViewController.swift */,
 				5EDAE8F7229C821600562D97 /* GradientLayer.swift */,
+				5E8F42F122A4C10300671BEE /* CardNumber2TableViewCell.swift */,
+				5E8F42F322A4C12A00671BEE /* AddACard2TableViewCell.swift */,
 			);
 			path = "Landing Page";
 			sourceTree = "<group>";
@@ -379,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E8F42F022A4B72D00671BEE /* PaymentScreenViewController.swift in Sources */,
 				5E71331E2291E97A003ABFC8 /* SignUpViewController.swift in Sources */,
 				5E5AD29C2291E60B001979E7 /* ForgotPasswordViewController.swift in Sources */,
 				5EDAE8EF229C6ABF00562D97 /* BluetoothInterface.swift in Sources */,
@@ -387,6 +397,7 @@
 				5EA43616228748110022D9AE /* ViewController.swift in Sources */,
 				5E8F42DD22A468E800671BEE /* SelectPaymentViewController.swift in Sources */,
 				5EDAE8F4229C714900562D97 /* LandingPageViewController.swift in Sources */,
+				5E8F42F422A4C12A00671BEE /* AddACard2TableViewCell.swift in Sources */,
 				5E71332422920035003ABFC8 /* WriteToDatabase.swift in Sources */,
 				5E8F42EE22A4938D00671BEE /* ThirdPageViewController.swift in Sources */,
 				5E8F42EC22A4938100671BEE /* SecondPageViewController.swift in Sources */,
@@ -403,6 +414,7 @@
 				5E8F42E122A472E500671BEE /* AddACardTableViewCell.swift in Sources */,
 				5E6926A7228755C000AF50FC /* Authenticate.swift in Sources */,
 				5EDAE8F6229C7C0500562D97 /* MenuBarViewController.swift in Sources */,
+				5E8F42F222A4C10300671BEE /* CardNumber2TableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

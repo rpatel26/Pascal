@@ -1,5 +1,5 @@
 //
-//  AddACardTableViewCell.swift
+//  CardNumber2TableViewCell.swift
 //  Pascal
 //
 //  Created by Ravi Patel on 6/2/19.
@@ -8,14 +8,13 @@
 
 import UIKit
 
-class AddACardTableViewCell: UITableViewCell {
+class CardNumber2TableViewCell: UITableViewCell {
 
-    @IBOutlet weak var add_a_card_label: UILabel!
-    @IBOutlet weak var plus_button: UIImageView!
+    @IBOutlet weak var card_number_label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         self.contentView.layer.borderWidth = 2
         self.contentView.layer.borderColor = UIColor.white.cgColor
     }
@@ -26,4 +25,10 @@ class AddACardTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //set the values for top,left,bottom,right margins
+        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        contentView.frame = contentView.frame.inset(by: margins)
+    }
 }

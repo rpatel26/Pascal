@@ -9,6 +9,14 @@
 import Foundation
 import FirebaseFirestore
 
+enum CURRENT_PAGE{
+    case PAYMENT
+    case RENT
+    case NONE
+}
+
+var current_page = CURRENT_PAGE.NONE
+
 class User{
     
     static let instance = User()
@@ -20,6 +28,7 @@ class User{
     var password: String!
     var age: String!
     var uuid: String!
+    var cards: [String]!
     
     private var db: Firestore!
     
@@ -31,6 +40,7 @@ class User{
         password = nil
         age = nil
         uuid = nil
+        cards = nil
         
         self.db = Firestore.firestore()
     }
@@ -48,6 +58,9 @@ class User{
                 self.email = (data!["Email"] as! String)
                 self.phone = (data!["Phone"] as! String)
                 self.age = (data!["Age"] as! String)
+                self.cards = (data!["Cards"] as! [String])
+//                print("data = ", data)
+//                print("data[Cards] = ", data!["Cards"])
                 success()
             }
         }

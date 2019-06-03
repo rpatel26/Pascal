@@ -65,9 +65,20 @@ class SerialNumberViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func next_button_clicked(_ sender: Any) {
         // TODO: check for valid code entry...
-        let storyboard = UIStoryboard(name: "Renting", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "select_payment")
-        self.present(viewController, animated: true, completion: nil)
+        self.view.endEditing(true)
+        let code = serial_number.text
+        
+        if code == "1234" {
+            let storyboard = UIStoryboard(name: "Renting", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "select_payment")
+            self.present(viewController, animated: true, completion: nil)
+        }
+        else{
+            let alert = UIAlertController(title: "Error", message: "Not a valid Pascal code number.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+       
     }
     
     @IBAction func back_button_clicked(_ sender: Any) {

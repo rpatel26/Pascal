@@ -1,5 +1,5 @@
 //
-//  SelectPaymentViewController.swift
+//  PaymentScreenViewController.swift
 //  Pascal
 //
 //  Created by Ravi Patel on 6/2/19.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class PaymentScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == user_cards.count{
             return 50
@@ -26,20 +25,29 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.row == user_cards.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "add_a_card") as! AddACardTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "add_a_card_2") as! AddACard2TableViewCell
             
             return cell
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "card_number") as! CardNumberTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "card_number_2") as! CardNumber2TableViewCell
             let card_number = user_cards[indexPath.row]
+            print("card number = ", card_number)
             cell.card_number_label.text = "**** **** **** " + String(card_number.suffix(4))
+            cell.selectionStyle = .none
             
             return cell
         }
-       
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == user_cards.count{
+            current_page = CURRENT_PAGE.PAYMENT
+            let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "payment_screen")
+            self.present(viewController, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -48,48 +56,28 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
         }
         return false
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == user_cards.count{
-            current_page = CURRENT_PAGE.RENT
-            let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "payment_screen")
-            self.present(viewController, animated: true, completion: nil)
-        }
-    }
-    
 
-    @IBOutlet weak var card_tables: UITableView!
-    @IBOutlet weak var confirm_button: UIButton!
+    @IBOutlet weak var cards_table_view: UITableView!
     
     var user_cards = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        card_tables.delegate = self
-        card_tables.dataSource = self
-        card_tables.alwaysBounceVertical = false
-        
-        confirm_button.customize_button()
-        
+        cards_table_view.delegate = self
+        cards_table_view.dataSource = self
         
         if User.instance.cards != nil{
             user_cards = User.instance.cards
         }
+        
+        print("number of cards = ", user_cards.count)
     }
     
     @IBAction func back_button_clicked(_ sender: Any) {
-        self.view.endEditing(true)
-        let storyboard = UIStoryboard(name: "Renting", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "rent_a_pascal")
-        self.present(viewController, animated: true, completion: nil)
-    }
- 
-    @IBAction func confirm_button_clicked(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Renting", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "current_pascal_status")
-        self.present(viewController, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
+        self.present(viewController, animated: false, completion: nil)
     }
     
 }

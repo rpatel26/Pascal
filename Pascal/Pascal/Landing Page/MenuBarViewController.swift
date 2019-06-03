@@ -117,7 +117,7 @@ class MenuBarViewController: UIViewController {
     
     @IBAction func payment_button_clicked(_ sender: Any) {
         let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "payment_screen")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "payment")
         self.present(viewController, animated: true, completion: nil)
     }
     

@@ -46,11 +46,11 @@ class LandingPageViewController: UIViewController, CLLocationManagerDelegate {
 
         ref = Database.database().reference()
         
-        currentLatitude = 32.869131
-        currentLongitude = -117.217818
+        currentLatitude = 32.881234
+        currentLongitude = -117.235489
         
         GMSServices.provideAPIKey("AIzaSyAXu0OYZD9_R0nyfVLCRSmGbFKcd6z9H_U")
-        let camera = GMSCameraPosition.camera(withLatitude: currentLatitude, longitude:  currentLongitude, zoom: 10)
+        let camera = GMSCameraPosition.camera(withLatitude: currentLatitude, longitude:  currentLongitude, zoom: 15)
         //        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         myMap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         self.view = myMap

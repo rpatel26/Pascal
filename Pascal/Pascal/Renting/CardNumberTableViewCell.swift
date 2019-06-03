@@ -10,6 +10,8 @@ import UIKit
 
 class CardNumberTableViewCell: UITableViewCell, UITableViewDelegate {
 
+    @IBOutlet weak var card_number_label: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 

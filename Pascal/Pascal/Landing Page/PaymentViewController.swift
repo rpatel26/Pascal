@@ -69,15 +69,36 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func back_button(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
-        self.present(viewController, animated: true, completion: nil)
+        if current_page == CURRENT_PAGE.PAYMENT{
+            let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "payment")
+            self.present(viewController, animated: true, completion: nil)
+        }
+        else if current_page == CURRENT_PAGE.RENT{
+            let storyboard = UIStoryboard(name: "Renting", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "select_payment")
+            self.present(viewController, animated: true, completion: nil)
+        }
+        else{
+            // do nothing
+        }
     }
     
     @IBAction func done_button_clicked(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
-        self.present(viewController, animated: true, completion: nil)
+        
+        if current_page == CURRENT_PAGE.PAYMENT{
+            let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "payment")
+            self.present(viewController, animated: true, completion: nil)
+        }
+        else if current_page == CURRENT_PAGE.RENT{
+            let storyboard = UIStoryboard(name: "Renting", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "select_payment")
+            self.present(viewController, animated: true, completion: nil)
+        }
+        else{
+            // do nothing
+        }
     }
     
 
