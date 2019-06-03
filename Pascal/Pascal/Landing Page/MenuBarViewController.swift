@@ -33,7 +33,9 @@ class MenuBarViewController: UIViewController {
         customize_settings_button()
         customize_logout_button()
         
-        welcome_label.text = "  Welcome, " + User.instance.firstName
+        if User.instance.firstName != nil{
+            welcome_label.text = "  Welcome, " + User.instance.firstName
+        }
     }
     
     
@@ -119,11 +121,19 @@ class MenuBarViewController: UIViewController {
         self.present(viewController, animated: true, completion: nil)
     }
     
+    @IBAction func how_to_rent_button_clicked(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "HowToRent", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "find_and_unlock")
+        self.present(viewController, animated: false, completion: nil)
+    }
+    
+    
     @IBAction func settings_button_clicked(_ sender: Any) {
         let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "settings_page")
         self.present(viewController, animated: true, completion: nil)
     }
+    
     
     @IBAction func logout_button_clicked(_ sender: Any) {
         

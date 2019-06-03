@@ -26,6 +26,9 @@
                                 <state key="normal" title="RENT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="rent_button_clicked:" destination="ErC-QN-7Qx" eventType="touchUpInside" id="rp0-0Z-eos"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esB-TC-pmR">
                                 <rect key="frame" x="0.0" y="20" width="375" height="60"/>
@@ -54,6 +57,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
                                 <state key="normal" title="HOW TO RENT"/>
+                                <connections>
+                                    <action selector="how_to_rent_button_clicked:" destination="ErC-QN-7Qx" eventType="touchUpInside" id="NLC-GZ-8bu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,6 +107,9 @@
                                         <state key="normal" title="    How to Rent">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="how_to_rent_button_clicked:" destination="2YC-zv-JpS" eventType="touchUpInside" id="jRX-zo-FHU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ey-9O-L1g">
                                         <rect key="frame" x="0.0" y="331" width="224" height="55"/>
@@ -215,6 +224,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <state key="normal" title="Reset Password"/>
+                                <connections>
+                                    <action selector="reset_password_button_clicked:" destination="vau-eJ-U2f" eventType="touchUpInside" id="UrC-bb-WJ2"/>
+                                    <action selector="reset_password_button_clicked:" destination="rYH-t5-QbO" eventType="touchUpInside" id="ap6-1g-luo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -228,6 +241,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKj-p9-D91" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rYH-t5-QbO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1416.8" y="579.76011994002999"/>
         </scene>

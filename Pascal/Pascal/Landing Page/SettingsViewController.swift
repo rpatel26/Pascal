@@ -28,6 +28,14 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         save_button.customize_button()
         reset_password.customize_button()
         
+        if User.instance.firstName != nil{
+            first_name_textfield.text = User.instance.firstName
+        }
+        
+        if User.instance.lastName != nil {
+            last_name_textfield.text = User.instance.lastName
+        }
+        
         first_name_textfield.attributedPlaceholder = NSAttributedString(string: "First Name",
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
@@ -75,9 +83,51 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func save_button_clicked(_ sender: Any) {
         self.view.endEditing(true)
-        let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
-        self.present(viewController, animated: true, completion: nil)
+        
+        User.instance.firstName = first_name_textfield.text ?? "Stranger"
+        User.instance.lastName = last_name_textfield.text ?? "Stranger"
+        User.instance.storeUserInfo(success: {
+            // success saving
+            let alert = UIAlertController(title: "Saved!", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (err) in
+                // go back to map
+                let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
+                self.present(viewController, animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true)
+        }) {
+            // unable to save
+            let alert = UIAlertController(title: "Error!", message: "Unable to save.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (err) in
+                // go back to map
+                let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
+                self.present(viewController, animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true)
+        }
+       
     }
+    
+    @IBAction func reset_password_button_clicked(_ sender: Any) {
+        if User.instance.email != nil{
+            Authenticate.instance.send_password_reset_link(email: User.instance.email, success: {
+                // password link successfully send
+                let alert = UIAlertController(title: "Success", message: "We sent you an email to: \(User.instance.email ?? "nil").\n Follow instructions in the email to reset your password.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (err) in
+                    // go back to map
+                    let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
+                    self.present(viewController, animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true)
+            }) {
+                // password link failed to send
+            }
+        }
+        
+    }
+    
     
 }
