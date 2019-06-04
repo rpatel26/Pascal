@@ -18,28 +18,38 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user_card_object.count + 1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return user_card_object.count + 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == user_card_object.count {
+        if indexPath.section == user_card_object.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "add_a_card") as! AddACardTableViewCell
             
             return cell
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "card_number") as! CardNumberTableViewCell
-            let card = user_card_object[indexPath.row]
+            let card = user_card_object[indexPath.section]
             let card_number = card["Card #"]!
             cell.card_number_label.text = "**** **** **** " + String(card_number.suffix(4))
             return cell
         }
        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -50,11 +60,14 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == user_card_object.count{
+        if indexPath.section == user_card_object.count{
             current_page = CURRENT_PAGE.RENT
             let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "payment_screen")
             self.present(viewController, animated: true, completion: nil)
+        }
+        else{
+            self.selected_payment_index = indexPath.section
         }
     }
     
@@ -63,6 +76,7 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var confirm_button: UIButton!
     
     var user_card_object = [[String: String]]()
+    var selected_payment_index = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +93,7 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         card_tables.reloadData()
+        selected_payment_index = -1
     }
     
     @IBAction func back_button_clicked(_ sender: Any) {
@@ -89,9 +104,16 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
     }
  
     @IBAction func confirm_button_clicked(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Renting", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "current_pascal_status")
-        self.present(viewController, animated: true, completion: nil)
+        if self.selected_payment_index != -1 {
+            let storyboard = UIStoryboard(name: "Renting", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "current_pascal_status")
+            self.present(viewController, animated: true, completion: nil)
+        }
+        else{
+            let alert = UIAlertController(title: "Error", message: "Must select a payment method.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     
 }
