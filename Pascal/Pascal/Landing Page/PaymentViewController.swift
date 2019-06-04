@@ -113,7 +113,7 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
             // save card information
             let card_number = self.card_number_textfield.text!
             let month = self.month_textfield.text!
-            let cvc = self.card_number_textfield.text!
+            let cvc = self.cvc_textfield.text!
             let zip = self.zip_code_textfield.text!
             
             User.instance.saveCardInfo(card_number: card_number, month: month, CVC: cvc, zip: zip, success: {

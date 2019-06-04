@@ -32,6 +32,9 @@ class CurrentStatusViewController: UIViewController, CBCentralManagerDelegate {
     
     var manager:CBCentralManager = CBCentralManager()
 
+    var start_rent_time: String!
+    var usage_hour: Int!
+    var timer_: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,28 @@ class CurrentStatusViewController: UIViewController, CBCentralManagerDelegate {
         customize_bluetooth_view()
         let gesture = UITapGestureRecognizer(target: self, action: #selector(bluetooth_view_tapped(sender:)))
         bluetooth_view.addGestureRecognizer(gesture)
+        
+        start_rent_time = User.instance.startRentTime
+        usage_hour = findDateDiff(time1Str: self.start_rent_time, time2Str: get_current_time())
+        calculatePayment()
+        self.current_hour_label.text = "Current Hours: " + String(usage_hour)
+        
+        
+        timer_ = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { (timer) in
+            
+            self.usage_hour = findDateDiff(time1Str: self.start_rent_time, time2Str: get_current_time())
+            self.current_hour_label.text = "Current Hours: " + String(self.usage_hour)
+            self.calculatePayment()
+        }
+    }
+    
+    func calculatePayment(){
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        
+        let payment = Double(self.usage_hour) * 1.50
+        self.payment_label.text = "Payment: $" + formatter.string(from: NSNumber(value: payment))!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,13 +95,14 @@ class CurrentStatusViewController: UIViewController, CBCentralManagerDelegate {
     @objc func bluetooth_view_tapped(sender: UITapGestureRecognizer){
         if sender.state == .ended {
             bluetooth_view.backgroundColor = .clear
-            //        let settingsUrl = NSURL(string:UIApplication.openSettingsURLString)! as URL
-            //        UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+            let settingsUrl = NSURL(string:UIApplication.openSettingsURLString)! as URL
+            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
         }
 
     }
     
     @IBAction func stop_renting_button_clicked(_ sender: Any) {
+        timer_.invalidate()
         let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
         self.present(viewController, animated: true, completion: nil)

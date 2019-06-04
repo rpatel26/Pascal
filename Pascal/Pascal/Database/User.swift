@@ -29,6 +29,7 @@ class User{
     var age: String!
     var uuid: String!
     var card_object: [[String: String]]!
+    var startRentTime: String!
     
     private var db: Firestore!
     
@@ -41,6 +42,7 @@ class User{
         age = nil
         uuid = nil
         card_object = nil
+        startRentTime = nil
         
         self.db = Firestore.firestore()
     }
@@ -62,7 +64,6 @@ class User{
                 if let cards = data!["Cards"] {
                     self.card_object = (cards as! [[String: String]])
                 }
-//                self.card_object = (data!["Cards"] as! [[String: String]])
 //                print("data = ", data)
 //                print("data[Cards] = ", data!["Card"])
                 success()
@@ -89,6 +90,19 @@ class User{
             success()
         }
     }
+    
+    func saveStartRentTime(rentTime: String, success: @escaping () -> (), failure: @escaping () -> ()){
+        self.startRentTime = rentTime
+        self.db.collection("User").document(self.uuid).setData([
+            "Start Rent Time": self.startRentTime!
+        ], merge: true) { (err) in
+            if err != nil{
+                failure()
+            }
+            success()
+        }
+    }
+    
     
     func registerUser(success: @escaping () -> (), failure: @escaping () -> ()) {
         Authenticate.instance.register_user(email: self.email, passWord: self.password, success: {
@@ -156,18 +170,40 @@ func get_current_time() -> String {
     return current_time
 }
 
-func findDateDiff(time1Str: String, time2Str: String) -> String {
+//func findDateDiff(time1Str: String, time2Str: String) -> String {
+//    let timeformatter = DateFormatter()
+//    timeformatter.dateFormat = "hh:mm a"
+//
+//    guard let time1 = timeformatter.date(from: time1Str),
+//        let time2 = timeformatter.date(from: time2Str) else { return "" }
+//
+//    //You can directly use from here if you have two dates
+//
+//    let interval = time2.timeIntervalSince(time1)
+//    var hour = interval / 3600;
+//    let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
+//    let intervalInt = Int(interval)
+//
+//    hour += 1
+//    return String(Int(hour))
+////    return "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes"
+//}
+
+func findDateDiff(time1Str: String, time2Str: String) -> Int {
     let timeformatter = DateFormatter()
     timeformatter.dateFormat = "hh:mm a"
     
     guard let time1 = timeformatter.date(from: time1Str),
-        let time2 = timeformatter.date(from: time2Str) else { return "" }
+        let time2 = timeformatter.date(from: time2Str) else { return 0 }
     
     //You can directly use from here if you have two dates
     
     let interval = time2.timeIntervalSince(time1)
-    let hour = interval / 3600;
+    var hour = interval / 3600;
     let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
     let intervalInt = Int(interval)
-    return "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes"
+    
+    hour += 1
+    return Int(hour)
+    //    return "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes"
 }

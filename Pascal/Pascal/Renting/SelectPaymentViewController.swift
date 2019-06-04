@@ -105,9 +105,18 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
  
     @IBAction func confirm_button_clicked(_ sender: Any) {
         if self.selected_payment_index != -1 {
-            let storyboard = UIStoryboard(name: "Renting", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "current_pascal_status")
-            self.present(viewController, animated: true, completion: nil)
+            User.instance.saveStartRentTime(rentTime: get_current_time(), success: {
+                // success
+                let storyboard = UIStoryboard(name: "Renting", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "current_pascal_status")
+                self.present(viewController, animated: true, completion: nil)
+            }) {
+                // failure
+                let alert = UIAlertController(title: "Error", message: "Having trouble connecting to database.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+          
         }
         else{
             let alert = UIAlertController(title: "Error", message: "Must select a payment method.", preferredStyle: .alert)
