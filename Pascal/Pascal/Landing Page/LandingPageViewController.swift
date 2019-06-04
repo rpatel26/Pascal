@@ -101,8 +101,7 @@ class LandingPageViewController: UIViewController, CLLocationManagerDelegate {
         myMap.addSubview(how_to_rent_button)
         myMap.addSubview(hamburger_menu)
     }
-
- 
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         

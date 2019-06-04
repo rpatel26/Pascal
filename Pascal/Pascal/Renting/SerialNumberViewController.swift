@@ -68,6 +68,7 @@ class SerialNumberViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         let code = serial_number.text
         
+        // get all possible serial number from firebase....
         if code == "1234" {
             let storyboard = UIStoryboard(name: "Renting", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "select_payment")

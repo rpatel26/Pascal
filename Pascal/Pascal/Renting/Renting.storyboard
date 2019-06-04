@@ -263,6 +263,7 @@
                     </view>
                     <connections>
                         <outlet property="bluetooth_view" destination="4HA-dR-6n6" id="x57-VZ-DMP"/>
+                        <outlet property="connection_status_label" destination="h61-dv-nQY" id="yyf-2R-lxl"/>
                         <outlet property="current_hour_label" destination="hii-Hm-wVr" id="Fvn-UP-7jh"/>
                         <outlet property="payment_label" destination="0Kn-FX-erT" id="Rge-9Q-Uxh"/>
                         <outlet property="stop_renting_button" destination="ZlA-t1-011" id="qQ3-pA-57J"/>

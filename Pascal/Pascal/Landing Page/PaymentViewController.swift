@@ -68,6 +68,29 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        
+        if textField == self.card_number_textfield{
+            return count <= 16
+        }
+        else if textField == self.month_textfield{
+            return count <= 4
+        }
+        else if textField == self.cvc_textfield{
+            return count <= 3
+        }
+        else{
+            return count <= 5
+        }
+    }
+    
     @IBAction func back_button(_ sender: Any) {
         if current_page == CURRENT_PAGE.PAYMENT{
             let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
@@ -85,20 +108,43 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func done_button_clicked(_ sender: Any) {
-        
-        if current_page == CURRENT_PAGE.PAYMENT{
-            let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "payment")
-            self.present(viewController, animated: true, completion: nil)
-        }
-        else if current_page == CURRENT_PAGE.RENT{
-            let storyboard = UIStoryboard(name: "Renting", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "select_payment")
-            self.present(viewController, animated: true, completion: nil)
+        if self.card_number_textfield.text?.count == 16 && self.month_textfield.text?.count == 4 && self.cvc_textfield.text?.count == 3 && self.zip_code_textfield.text?.count == 5{
+            
+            // save card information
+            let card_number = self.card_number_textfield.text!
+            let month = self.month_textfield.text!
+            let cvc = self.card_number_textfield.text!
+            let zip = self.zip_code_textfield.text!
+            
+            User.instance.saveCardInfo(card_number: card_number, month: month, CVC: cvc, zip: zip, success: {
+                // success
+                if current_page == CURRENT_PAGE.PAYMENT{
+                    let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "payment")
+                    self.present(viewController, animated: true, completion: nil)
+                }
+                else if current_page == CURRENT_PAGE.RENT{
+                    let storyboard = UIStoryboard(name: "Renting", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "select_payment")
+                    self.present(viewController, animated: true, completion: nil)
+                }
+                else{
+                    // do nothing
+                }
+            }) {
+                // failure to store card info
+                let alert = UIAlertController(title: "Error", message: "Cannot Save Card Information.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+           
         }
         else{
-            // do nothing
+            let alert = UIAlertController(title: "Error", message: "Invalid credit card information.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
+       
     }
     
 

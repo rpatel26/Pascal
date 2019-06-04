@@ -28,7 +28,7 @@ class User{
     var password: String!
     var age: String!
     var uuid: String!
-    var cards: [String]!
+    var card_object: [[String: String]]!
     
     private var db: Firestore!
     
@@ -40,7 +40,7 @@ class User{
         password = nil
         age = nil
         uuid = nil
-        cards = nil
+        card_object = nil
         
         self.db = Firestore.firestore()
     }
@@ -58,11 +58,35 @@ class User{
                 self.email = (data!["Email"] as! String)
                 self.phone = (data!["Phone"] as! String)
                 self.age = (data!["Age"] as! String)
-                self.cards = (data!["Cards"] as! [String])
+                
+                if let cards = data!["Cards"] {
+                    self.card_object = (cards as! [[String: String]])
+                }
+//                self.card_object = (data!["Cards"] as! [[String: String]])
 //                print("data = ", data)
-//                print("data[Cards] = ", data!["Cards"])
+//                print("data[Cards] = ", data!["Card"])
                 success()
             }
+        }
+    }
+    
+    func saveCardInfo(card_number: String, month: String, CVC: String, zip: String, success: @escaping () -> (), failure: @escaping () -> ()){
+        
+
+        let card = ["Card #": card_number, "Month": month, "CVC": CVC, "Zip Code": zip]
+        if self.card_object == nil{
+            self.card_object = [[String:String]]()
+        }
+        self.card_object.append(card)
+        
+        self.db.collection("User").document(self.uuid).setData([
+            "Cards": card_object!
+        ], merge: true) { (err) in
+            // do nothing
+            if err != nil{
+                failure()
+            }
+            success()
         }
     }
     
