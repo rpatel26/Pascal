@@ -49,6 +49,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }) {
             // do nothing if user not logged in
         }
+        
+//        let old_time = "6:27 PM"
+//        let current_time = get_current_time()
+//        print("Old Time: ", old_time)
+//        print("Current Time: ", current_time)
+//        print("Difference: ", findDateDiff(time1Str: old_time, time2Str: current_time))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

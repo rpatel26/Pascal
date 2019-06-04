@@ -118,3 +118,56 @@ class User{
         }
     }
 }
+
+func get_current_time() -> String {
+    let date = Date()
+    let calendar = Calendar.current
+    let hour = calendar.component(.hour, from: date)
+    let minutes = calendar.component(.minute, from: date)
+    //        let seconds = calendar.component(.second, from: date)
+    
+    var current_hour = ""
+    
+    if hour < 10 {
+        current_hour = String("0") + String(hour)
+    }
+    else if hour > 12 {
+        current_hour = String(hour - 12)
+    }
+    else{
+        current_hour = String(hour)
+    }
+    
+    let current_minute = minutes < 10 ? String("0") + String(minutes) : String(minutes)
+    //        let current_seconds = seconds < 10 ? String("0") + String(seconds) : String(seconds)
+    
+    //        let current_time = String(current_hour) + ":" + String(current_minute) + ":" + String(current_seconds)
+    
+    var current_time = ""
+    current_time = String(current_hour) + ":" + String(current_minute)
+    
+    if hour >= 12 {
+        current_time = current_time + " PM"
+    }
+    else{
+        current_time = current_time + " AM"
+    }
+    
+    return current_time
+}
+
+func findDateDiff(time1Str: String, time2Str: String) -> String {
+    let timeformatter = DateFormatter()
+    timeformatter.dateFormat = "hh:mm a"
+    
+    guard let time1 = timeformatter.date(from: time1Str),
+        let time2 = timeformatter.date(from: time2Str) else { return "" }
+    
+    //You can directly use from here if you have two dates
+    
+    let interval = time2.timeIntervalSince(time1)
+    let hour = interval / 3600;
+    let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
+    let intervalInt = Int(interval)
+    return "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes"
+}
