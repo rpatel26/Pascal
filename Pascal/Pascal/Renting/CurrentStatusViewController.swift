@@ -37,11 +37,16 @@ class CurrentStatusViewController: UIViewController, CBCentralManagerDelegate {
         super.viewDidLoad()
 
         manager.delegate = self
-        
+                
         stop_renting_button.customize_button()
         customize_bluetooth_view()
         let gesture = UITapGestureRecognizer(target: self, action: #selector(bluetooth_view_tapped(sender:)))
         bluetooth_view.addGestureRecognizer(gesture)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did appear...")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
