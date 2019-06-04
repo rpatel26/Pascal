@@ -21,12 +21,6 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        Authenticate.instance.send_password_reset_link(email: "dtheokar@ucsd.edu", success: {
-//            print("email send successfull")
-//        }) {
-//            print("Could not send email. Make sure email is valid")
-//        }
         
         // to change view when keyboard appeards
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name:UIResponder.keyboardWillShowNotification, object: nil)

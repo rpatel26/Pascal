@@ -258,41 +258,11 @@
                         <outlet property="password_textfield" destination="waj-y1-HLi" id="EV8-eG-Nf1"/>
                         <outlet property="phone_textfield" destination="noo-Zy-Efa" id="wTE-v3-cJL"/>
                         <outlet property="signup_button" destination="lTT-Up-pFf" id="pKy-dB-McG"/>
-                        <segue destination="05a-m9-ud8" kind="show" id="diQ-4p-URD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhj-uv-rWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53.600000000000001" y="776.76161919040487"/>
-        </scene>
-        <!--Verification Screen View Controller-->
-        <scene sceneID="TiM-AW-Pdf">
-            <objects>
-                <viewController storyboardIdentifier="verification_screen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="05a-m9-ud8" customClass="VerificationScreenViewController" customModule="Pascal" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="t6j-lt-EIs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_image" translatesAutoresizingMaskIntoConstraints="NO" id="VcG-Cu-v4Z">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwg-GE-yvz">
-                                <rect key="frame" x="16" y="20" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="back_button"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="7c5-ue-H20"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="CUN-SL-qqN"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VPf-MI-INY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="976.79999999999995" y="776.76161919040487"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="wn5-cK-AJ3">
@@ -389,6 +359,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="N1X-f8-7hv"/>
-        <segue reference="7c5-ue-H20"/>
+        <segue reference="lyU-dy-ijr"/>
     </inferredMetricsTieBreakers>
 </document>

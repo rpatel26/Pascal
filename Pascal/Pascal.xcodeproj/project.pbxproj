@@ -12,9 +12,7 @@
 		5E6926A7228755C000AF50FC /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6926A6228755C000AF50FC /* Authenticate.swift */; };
 		5E71331C2291E7D6003ABFC8 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71331B2291E7D6003ABFC8 /* LaunchScreenViewController.swift */; };
 		5E71331E2291E97A003ABFC8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71331D2291E97A003ABFC8 /* SignUpViewController.swift */; };
-		5E7133202291EA91003ABFC8 /* VerificationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71331F2291EA91003ABFC8 /* VerificationScreenViewController.swift */; };
 		5E7133222291FFC9003ABFC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7133212291FFC9003ABFC8 /* User.swift */; };
-		5E71332422920035003ABFC8 /* WriteToDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71332322920035003ABFC8 /* WriteToDatabase.swift */; };
 		5E71332A22920C93003ABFC8 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E71332922920C93003ABFC8 /* loadingAnimation.json */; };
 		5E8F42D922A45F3F00671BEE /* Renting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8F42D822A45F3F00671BEE /* Renting.storyboard */; };
 		5E8F42DB22A4637700671BEE /* SerialNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42DA22A4637700671BEE /* SerialNumberViewController.swift */; };
@@ -53,9 +51,7 @@
 		5E6926A6228755C000AF50FC /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		5E71331B2291E7D6003ABFC8 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		5E71331D2291E97A003ABFC8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		5E71331F2291EA91003ABFC8 /* VerificationScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationScreenViewController.swift; sourceTree = "<group>"; };
 		5E7133212291FFC9003ABFC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		5E71332322920035003ABFC8 /* WriteToDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteToDatabase.swift; sourceTree = "<group>"; };
 		5E71332922920C93003ABFC8 /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loadingAnimation.json; path = ../../loadingAnimation.json; sourceTree = "<group>"; };
 		5E8F42D822A45F3F00671BEE /* Renting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Renting.storyboard; sourceTree = "<group>"; };
 		5E8F42DA22A4637700671BEE /* SerialNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialNumberViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +112,6 @@
 			children = (
 				5E7133212291FFC9003ABFC8 /* User.swift */,
 				5E6926A6228755C000AF50FC /* Authenticate.swift */,
-				5E71332322920035003ABFC8 /* WriteToDatabase.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -176,7 +171,6 @@
 				5EA43615228748110022D9AE /* ViewController.swift */,
 				5E5AD29B2291E60B001979E7 /* ForgotPasswordViewController.swift */,
 				5E71331D2291E97A003ABFC8 /* SignUpViewController.swift */,
-				5E71331F2291EA91003ABFC8 /* VerificationScreenViewController.swift */,
 				5EA43617228748110022D9AE /* Main.storyboard */,
 				5EA4361A228748120022D9AE /* Assets.xcassets */,
 				5EA4361C228748120022D9AE /* LaunchScreen.storyboard */,
@@ -398,7 +392,6 @@
 				5E8F42DD22A468E800671BEE /* SelectPaymentViewController.swift in Sources */,
 				5EDAE8F4229C714900562D97 /* LandingPageViewController.swift in Sources */,
 				5E8F42F422A4C12A00671BEE /* AddACard2TableViewCell.swift in Sources */,
-				5E71332422920035003ABFC8 /* WriteToDatabase.swift in Sources */,
 				5E8F42EE22A4938D00671BEE /* ThirdPageViewController.swift in Sources */,
 				5E8F42EC22A4938100671BEE /* SecondPageViewController.swift in Sources */,
 				5E8F42E322A47BF000671BEE /* CurrentStatusViewController.swift in Sources */,
@@ -410,7 +403,6 @@
 				5EDAE8FC229CAA6B00562D97 /* SettingsViewController.swift in Sources */,
 				5E8F42EA22A492F400671BEE /* FirstPageViewController.swift in Sources */,
 				5EDAE8F8229C821600562D97 /* GradientLayer.swift in Sources */,
-				5E7133202291EA91003ABFC8 /* VerificationScreenViewController.swift in Sources */,
 				5E8F42E122A472E500671BEE /* AddACardTableViewCell.swift in Sources */,
 				5E6926A7228755C000AF50FC /* Authenticate.swift in Sources */,
 				5EDAE8F6229C7C0500562D97 /* MenuBarViewController.swift in Sources */,
