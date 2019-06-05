@@ -107,9 +107,17 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
         if self.selected_payment_index != -1 {
             User.instance.saveStartRentTime(rentTime: get_current_time(), success: {
                 // success
-                let storyboard = UIStoryboard(name: "Renting", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "unlock_animation")
-                self.present(viewController, animated: true, completion: nil)
+                
+                User.instance.storeInUser(inUse: true, success: {
+                    // store success
+                    let storyboard = UIStoryboard(name: "Renting", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "unlock_animation")
+                    self.present(viewController, animated: true, completion: nil)
+                }, failure: {
+                    // store failure
+                })
+                
+               
             }) {
                 // failure
                 let alert = UIAlertController(title: "Error", message: "Having trouble connecting to database.", preferredStyle: .alert)

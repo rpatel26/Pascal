@@ -35,6 +35,7 @@ class CurrentStatusViewController: UIViewController, CBCentralManagerDelegate {
     var start_rent_time: String!
     var usage_hour: Int!
     var timer_: Timer!
+    var timer_2: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +49,25 @@ class CurrentStatusViewController: UIViewController, CBCentralManagerDelegate {
         
         start_rent_time = User.instance.startRentTime
         usage_hour = findDateDiff(time1Str: self.start_rent_time, time2Str: get_current_time())
+        let duration = findDateDiff2(time1Str: self.start_rent_time, time2Str: get_current_time())
         calculatePayment()
-        self.current_hour_label.text = "Current Hours: " + String(usage_hour)
+        self.current_hour_label.text = "Duration: " + String(duration)
         
         
         timer_ = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { (timer) in
             
-            self.usage_hour = findDateDiff(time1Str: self.start_rent_time, time2Str: get_current_time())
-            self.current_hour_label.text = "Current Hours: " + String(self.usage_hour)
-            self.calculatePayment()
+            let duration = findDateDiff2(time1Str: self.start_rent_time, time2Str: get_current_time())
+            self.current_hour_label.text = "Duration: " + String(duration)
+//            self.calculatePayment()
         }
+        
+        timer_2 = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true
+            , block: { (timer) in
+                // do nothing
+                self.usage_hour = findDateDiff(time1Str: self.start_rent_time, time2Str: get_current_time())
+                self.calculatePayment()
+        })
+        
     }
     
     func calculatePayment(){
@@ -95,17 +105,35 @@ class CurrentStatusViewController: UIViewController, CBCentralManagerDelegate {
     @objc func bluetooth_view_tapped(sender: UITapGestureRecognizer){
         if sender.state == .ended {
             bluetooth_view.backgroundColor = .clear
-            let settingsUrl = NSURL(string:UIApplication.openSettingsURLString)! as URL
-            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+            
+            if let url = URL(string:"App-Prefs:root=Bluetooth") {
+                if UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+//            let settingsUrl = NSURL(string:UIApplication.openSettingsURLString)! as URL
+//            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
         }
 
     }
     
     @IBAction func stop_renting_button_clicked(_ sender: Any) {
         timer_.invalidate()
-        let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
-        self.present(viewController, animated: true, completion: nil)
+        timer_2.invalidate()
+        
+        User.instance.storeInUser(inUse: false, success: {
+            // store successful
+            let storyboard = UIStoryboard(name: "LandingPage", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "landing_page")
+            self.present(viewController, animated: true, completion: nil)
+        }) {
+            // store unsuccessful
+        }
+        
     }
 
 }
