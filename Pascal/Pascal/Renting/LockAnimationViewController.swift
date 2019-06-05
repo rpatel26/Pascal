@@ -1,27 +1,25 @@
 //
-//  LaunchScreenViewController.swift
+//  LockAnimationViewController.swift
 //  Pascal
 //
-//  Created by Ravi Patel on 5/19/19.
+//  Created by Ravi Patel on 6/4/19.
 //  Copyright © 2019 ECE 140. All rights reserved.
 //
 
 import UIKit
 import Lottie
 
-class LaunchScreenViewController: UIViewController {
+class LockAnimationViewController: UIViewController {
     var lottie_animation: AnimationView!
-    @IBOutlet weak var loading_animation: AnimationView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
-        lottie_animation = AnimationView(name: "ice_cream_animation")
+        lottie_animation = AnimationView(name: "data")
         lottie_animation.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-        loading_animation.backgroundColor = UIColor.clear
         
         self.view.addSubview(lottie_animation)
-        self.view.backgroundColor = UIColor(red: 59/255, green: 18/255, blue: 81/255, alpha: 1)
+        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         print("view did load....")
     }
     
@@ -33,7 +31,11 @@ class LaunchScreenViewController: UIViewController {
     func playAnimation(){
         lottie_animation.contentMode = .scaleAspectFill
         lottie_animation.play { (err) in
-            self.performSegue(withIdentifier: "lottie_to_main", sender: self)
+            let storyboard = UIStoryboard(name: "Renting", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "current_pascal_status")
+            self.present(viewController, animated: true, completion: nil)
         }
+        
     }
+    
 }

@@ -14,6 +14,10 @@
 		5E71331E2291E97A003ABFC8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71331D2291E97A003ABFC8 /* SignUpViewController.swift */; };
 		5E7133222291FFC9003ABFC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7133212291FFC9003ABFC8 /* User.swift */; };
 		5E71332A22920C93003ABFC8 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E71332922920C93003ABFC8 /* loadingAnimation.json */; };
+		5E8A946D22A7463000CD842D /* lock_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A946C22A7462F00CD842D /* lock_animation.json */; };
+		5E8A946F22A7468B00CD842D /* ice_cream_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A946E22A7468B00CD842D /* ice_cream_animation.json */; };
+		5E8A947122A746FF00CD842D /* LockAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A947022A746FF00CD842D /* LockAnimationViewController.swift */; };
+		5E8A947322A74A2300CD842D /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A947222A74A2200CD842D /* data.json */; };
 		5E8F42D922A45F3F00671BEE /* Renting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8F42D822A45F3F00671BEE /* Renting.storyboard */; };
 		5E8F42DB22A4637700671BEE /* SerialNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42DA22A4637700671BEE /* SerialNumberViewController.swift */; };
 		5E8F42DD22A468E800671BEE /* SelectPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F42DC22A468E800671BEE /* SelectPaymentViewController.swift */; };
@@ -53,6 +57,10 @@
 		5E71331D2291E97A003ABFC8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5E7133212291FFC9003ABFC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5E71332922920C93003ABFC8 /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loadingAnimation.json; path = ../../loadingAnimation.json; sourceTree = "<group>"; };
+		5E8A946C22A7462F00CD842D /* lock_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lock_animation.json; sourceTree = "<group>"; };
+		5E8A946E22A7468B00CD842D /* ice_cream_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ice_cream_animation.json; path = ../../ice_cream_animation.json; sourceTree = "<group>"; };
+		5E8A947022A746FF00CD842D /* LockAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAnimationViewController.swift; sourceTree = "<group>"; };
+		5E8A947222A74A2200CD842D /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = ../../../data.json; sourceTree = "<group>"; };
 		5E8F42D822A45F3F00671BEE /* Renting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Renting.storyboard; sourceTree = "<group>"; };
 		5E8F42DA22A4637700671BEE /* SerialNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialNumberViewController.swift; sourceTree = "<group>"; };
 		5E8F42DC22A468E800671BEE /* SelectPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentViewController.swift; sourceTree = "<group>"; };
@@ -120,11 +128,14 @@
 			isa = PBXGroup;
 			children = (
 				5E8F42D822A45F3F00671BEE /* Renting.storyboard */,
+				5E8A947022A746FF00CD842D /* LockAnimationViewController.swift */,
 				5E8F42DA22A4637700671BEE /* SerialNumberViewController.swift */,
 				5E8F42E222A47BF000671BEE /* CurrentStatusViewController.swift */,
 				5E8F42DC22A468E800671BEE /* SelectPaymentViewController.swift */,
 				5E8F42DE22A46A0B00671BEE /* CardNumberTableViewCell.swift */,
 				5E8F42E022A472E500671BEE /* AddACardTableViewCell.swift */,
+				5E8A946C22A7462F00CD842D /* lock_animation.json */,
+				5E8A947222A74A2200CD842D /* data.json */,
 			);
 			path = Renting;
 			sourceTree = "<group>";
@@ -177,6 +188,7 @@
 				5EA4361F228748120022D9AE /* Info.plist */,
 				5E5AD2992291E2B8001979E7 /* GoogleService-Info.plist */,
 				5E71332922920C93003ABFC8 /* loadingAnimation.json */,
+				5E8A946E22A7468B00CD842D /* ice_cream_animation.json */,
 				5EDAE8EE229C6ABF00562D97 /* BluetoothInterface.swift */,
 			);
 			path = Pascal;
@@ -279,9 +291,12 @@
 				5E8F42D922A45F3F00671BEE /* Renting.storyboard in Resources */,
 				5EA4361E228748120022D9AE /* LaunchScreen.storyboard in Resources */,
 				5E5AD29A2291E2B8001979E7 /* GoogleService-Info.plist in Resources */,
+				5E8A946D22A7463000CD842D /* lock_animation.json in Resources */,
 				5E71332A22920C93003ABFC8 /* loadingAnimation.json in Resources */,
 				5EA4361B228748120022D9AE /* Assets.xcassets in Resources */,
 				5EDAE8F1229C711600562D97 /* LandingPage.storyboard in Resources */,
+				5E8A947322A74A2300CD842D /* data.json in Resources */,
+				5E8A946F22A7468B00CD842D /* ice_cream_animation.json in Resources */,
 				5EA43619228748110022D9AE /* Main.storyboard in Resources */,
 				5E8F42E622A4807100671BEE /* HowToRent.storyboard in Resources */,
 				5EDAE8E6229C65D700562D97 /* Bluetooth.storyboard in Resources */,
@@ -386,6 +401,7 @@
 				5E71331E2291E97A003ABFC8 /* SignUpViewController.swift in Sources */,
 				5E5AD29C2291E60B001979E7 /* ForgotPasswordViewController.swift in Sources */,
 				5EDAE8EF229C6ABF00562D97 /* BluetoothInterface.swift in Sources */,
+				5E8A947122A746FF00CD842D /* LockAnimationViewController.swift in Sources */,
 				5EDAE8FA229C997C00562D97 /* PaymentViewController.swift in Sources */,
 				5E8F42DF22A46A0B00671BEE /* CardNumberTableViewCell.swift in Sources */,
 				5EA43616228748110022D9AE /* ViewController.swift in Sources */,

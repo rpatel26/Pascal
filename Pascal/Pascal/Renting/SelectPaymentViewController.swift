@@ -108,7 +108,7 @@ class SelectPaymentViewController: UIViewController, UITableViewDelegate, UITabl
             User.instance.saveStartRentTime(rentTime: get_current_time(), success: {
                 // success
                 let storyboard = UIStoryboard(name: "Renting", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "current_pascal_status")
+                let viewController = storyboard.instantiateViewController(withIdentifier: "unlock_animation")
                 self.present(viewController, animated: true, completion: nil)
             }) {
                 // failure
